@@ -187,7 +187,7 @@ export default function SupplyChainPage() {
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white truncate">
                     {stage.name}
                   </h3>
-                  <p className="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1">
+                  <p className="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2">
                     {stage.description}
                   </p>
                 </button>
