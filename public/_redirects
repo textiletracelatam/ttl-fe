@@ -1,1 +1,2 @@
-/* /index.html 200
+/:id/* /_/:splat 200
+/:id /_/index.html 200
