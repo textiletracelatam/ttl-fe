@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useProductId } from "../hooks/useProductId";
 import {
   Dialog,
   DialogBackdrop,
@@ -17,7 +18,6 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import { pages, pagePath } from "../pages";
 
 const subpages = [
   { title: "Supply Chain", route: "supply-chain" },
@@ -33,14 +33,19 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
+
+  function withId(path: string) {
+    return `${path}?id=${encodeURIComponent(id)}`;
+  }
+
   function navigate(path: string) {
-    router.push(path, { scroll: false });
+    router.push(withId(path), { scroll: false });
     setOpen(false);
   }
 
-  const homePath = pagePath(id, pages[0]);
-  const productDetailsPath = pagePath(id, pages[1]);
+  const homePN = "/";
+  const pdPN = "/product-details";
 
   return (
     <header className="sticky top-0 z-40 bg-background">
@@ -49,7 +54,7 @@ export default function Navigation() {
           {/* Logo */}
           <div className="shrink-0">
             <button
-              onClick={() => navigate(homePath)}
+              onClick={() => navigate(homePN)}
               className="text-lg font-bold text-primary-700 dark:text-white cursor-pointer"
             >
               My App
@@ -60,9 +65,9 @@ export default function Navigation() {
           <div className="hidden lg:flex lg:items-center lg:gap-1">
             {/* Home link */}
             <button
-              onClick={() => navigate(homePath)}
+              onClick={() => navigate(homePN)}
               className={`rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${
-                pathname === homePath
+                pathname === homePN
                   ? "text-primary-700 dark:text-primary-300"
                   : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
               }`}
@@ -74,7 +79,7 @@ export default function Navigation() {
             <Popover className="relative">
               <PopoverButton
                 className={`group inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors cursor-pointer focus:outline-none ${
-                  pathname.startsWith(productDetailsPath)
+                  pathname.startsWith(pdPN)
                     ? "text-primary-700 dark:text-primary-300"
                     : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                 }`}
@@ -92,7 +97,7 @@ export default function Navigation() {
                   {/* Link to main product details page */}
                   <CloseButton
                     as="button"
-                    onClick={() => navigate(productDetailsPath)}
+                    onClick={() => navigate(pdPN)}
                     className="block w-full text-left rounded-lg px-3 py-2 text-sm font-semibold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
                     Overview
@@ -102,13 +107,13 @@ export default function Navigation() {
 
                   {/* Subpages */}
                   {subpages.map((sub) => {
-                    const subPath = `${productDetailsPath}/${sub.route}`;
-                    const isActive = pathname === subPath;
+                    const subPN = `${pdPN}/${sub.route}`;
+                    const isActive = pathname === subPN;
                     return (
                       <CloseButton
                         as="button"
                         key={sub.route}
-                        onClick={() => navigate(subPath)}
+                        onClick={() => navigate(subPN)}
                         className={`block w-full text-left rounded-lg px-3 py-2 text-sm transition-colors cursor-pointer ${
                           isActive
                             ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
@@ -198,9 +203,9 @@ export default function Navigation() {
               <div className="mt-3 space-y-1 px-2">
                 {/* Home */}
                 <button
-                  onClick={() => navigate(homePath)}
+                  onClick={() => navigate(homePN)}
                   className={`block w-full text-left rounded-md px-3 py-2 text-base font-medium cursor-pointer ${
-                    pathname === homePath
+                    pathname === homePN
                       ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
                       : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
                   }`}
@@ -209,10 +214,10 @@ export default function Navigation() {
                 </button>
 
                 {/* Product Details — collapsible */}
-                <Disclosure defaultOpen={pathname.startsWith(productDetailsPath)}>
+                <Disclosure defaultOpen={pathname.startsWith(pdPN)}>
                   <DisclosureButton
                     className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium cursor-pointer ${
-                      pathname.startsWith(productDetailsPath)
+                      pathname.startsWith(pdPN)
                         ? "text-primary-700 dark:text-primary-300"
                         : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
                     }`}
@@ -222,9 +227,9 @@ export default function Navigation() {
                   </DisclosureButton>
                   <DisclosurePanel className="space-y-1 pl-3">
                     <button
-                      onClick={() => navigate(productDetailsPath)}
+                      onClick={() => navigate(pdPN)}
                       className={`block w-full text-left rounded-md px-3 py-2 text-sm font-semibold cursor-pointer ${
-                        pathname === productDetailsPath
+                        pathname === pdPN
                           ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
                           : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                       }`}
@@ -232,12 +237,12 @@ export default function Navigation() {
                       Overview
                     </button>
                     {subpages.map((sub) => {
-                      const subPath = `${productDetailsPath}/${sub.route}`;
-                      const isActive = pathname === subPath;
+                      const subPN = `${pdPN}/${sub.route}`;
+                      const isActive = pathname === subPN;
                       return (
                         <button
                           key={sub.route}
-                          onClick={() => navigate(subPath)}
+                          onClick={() => navigate(subPN)}
                           className={`block w-full text-left rounded-md px-3 py-2 text-sm cursor-pointer ${
                             isActive
                               ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"

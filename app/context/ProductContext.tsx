@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { useProductId } from "../hooks/useProductId";
 
 export type ProductImage = {
   src: string;
@@ -34,15 +35,15 @@ export type Product = {
 const ProductContext = createContext<Product | null>(null);
 
 export function ProductProvider({
-  id,
   children,
 }: {
-  id: string;
   children: React.ReactNode;
 }) {
+  const id = useProductId();
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
+    if (!id) return;
     fetch(`/api/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));

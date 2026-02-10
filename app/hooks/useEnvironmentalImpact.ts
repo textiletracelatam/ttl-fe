@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 
 export type ImpactLevel = "min" | "low" | "mid" | "high" | "very high";
 export type ChemicalCompliance = "certified" | "yes" | "no";
@@ -20,7 +20,7 @@ export type EnvironmentalImpact = {
 };
 
 export function useEnvironmentalImpact() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [data, setData] = useState<EnvironmentalImpact | null>(null);
 
   useEffect(() => {

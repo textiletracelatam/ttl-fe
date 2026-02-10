@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useProductId } from "../hooks/useProductId";
 import { pages, pagePath } from "../pages";
 
 export default function PageSwiper({
@@ -12,7 +13,7 @@ export default function PageSwiper({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     startIndex: initialSlide,
     watchDrag: (_emblaApi, event) => {
@@ -26,9 +27,8 @@ export default function PageSwiper({
     if (!emblaApi) return;
     const index = emblaApi.selectedScrollSnap();
     const page = pages[index] ?? pages[0];
-    const nextPath = pagePath(id, page);
-    if (pathname !== nextPath) {
-      router.push(nextPath, { scroll: false });
+    if (pathname !== page.path) {
+      router.push(pagePath(id, page), { scroll: false });
     }
   }, [emblaApi, pathname, router, id]);
 

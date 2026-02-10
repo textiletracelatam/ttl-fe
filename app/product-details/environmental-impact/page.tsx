@@ -1,13 +1,14 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useProductId } from "@/app/hooks/useProductId";
 import DetailPageLayout from "@/app/components/DetailPageLayout";
 import { useEnvironmentalImpact } from "@/app/hooks/useEnvironmentalImpact";
 
 export default function EnvironmentalImpactPage() {
   const data = useEnvironmentalImpact();
   const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
 
   return (
     <DetailPageLayout title="Environmental Impact">
@@ -44,7 +45,7 @@ export default function EnvironmentalImpactPage() {
             </a>
 
             <button
-              onClick={() => router.push(`/${id}/product-details/certifications`)}
+              onClick={() => router.push(`/product-details/certifications?id=${encodeURIComponent(id)}`)}
               className="block w-full rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-5 sm:p-6 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
             >
               <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white">

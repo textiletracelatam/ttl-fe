@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 
 export type CompositionMaterial = {
   name: string;
@@ -16,7 +16,7 @@ export type Composition = {
 };
 
 export function useComposition() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [data, setData] = useState<Composition | null>(null);
 
   useEffect(() => {

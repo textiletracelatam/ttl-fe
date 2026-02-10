@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useProduct } from "@/app/context/ProductContext";
+import { useProductId } from "@/app/hooks/useProductId";
 
 
 export default function ProductDetailsContent() {
   const product = useProduct();
   const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
 
   if (!product) return null;
 
@@ -17,7 +18,7 @@ export default function ProductDetailsContent() {
   const fullWidthCards = product.details?.filter((d) => !d.image) ?? [];
 
   function navigate(route: string) {
-    router.push(`/${id}/product-details/${route}`);
+    router.push(`/product-details/${route}?id=${encodeURIComponent(id)}`);
   }
 
   return (

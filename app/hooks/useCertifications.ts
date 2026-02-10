@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 
 export type Certification = {
   name: string;
@@ -13,7 +13,7 @@ export type Certification = {
 };
 
 export function useCertifications() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [certifications, setCertifications] = useState<Certification[]>([]);
 
   useEffect(() => {

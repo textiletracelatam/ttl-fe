@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 import type { ProductImage } from "../context/ProductContext";
 
 export type GarmentCareSection = {
@@ -17,7 +17,7 @@ export type GarmentCare = {
 };
 
 export function useGarmentCare() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [data, setData] = useState<GarmentCare | null>(null);
 
   useEffect(() => {

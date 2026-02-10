@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 import type { ProductImage } from "../context/ProductContext";
 
 export type MaterialInnovation = {
@@ -12,7 +12,7 @@ export type MaterialInnovation = {
 };
 
 export function useMaterialInnovation() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [data, setData] = useState<MaterialInnovation | null>(null);
 
   useEffect(() => {

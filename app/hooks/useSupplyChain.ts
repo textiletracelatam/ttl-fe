@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useProductId } from "./useProductId";
 import type { ProductImage } from "../context/ProductContext";
 
 export type SupplyChainStage = {
@@ -18,7 +18,7 @@ export type SupplyChain = {
 };
 
 export function useSupplyChain() {
-  const { id } = useParams<{ id: string }>();
+  const id = useProductId();
   const [supplyChain, setSupplyChain] = useState<SupplyChain | null>(null);
 
   useEffect(() => {

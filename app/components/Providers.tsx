@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { ProductProvider } from "../context/ProductContext";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -13,5 +14,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   if (!ready) return null;
 
-  return <>{children}</>;
+  return (
+    <Suspense>
+      <ProductProvider>
+        {children}
+      </ProductProvider>
+    </Suspense>
+  );
 }
