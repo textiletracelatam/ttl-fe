@@ -55,9 +55,22 @@ export default function Navigation() {
           <div className="shrink-0">
             <button
               onClick={() => navigate(homePN)}
-              className="text-lg font-bold text-primary-700 dark:text-white cursor-pointer"
+              className="cursor-pointer"
             >
-              My App
+              <Image
+                src="/logo_text-black.svg"
+                alt="Logo"
+                width={120}
+                height={32}
+                className="h-8 w-auto dark:hidden"
+              />
+              <Image
+                src="/logo_text-white.svg"
+                alt="Logo"
+                width={120}
+                height={32}
+                className="h-8 w-auto hidden dark:block"
+              />
             </button>
           </div>
 
@@ -129,11 +142,18 @@ export default function Navigation() {
                   {/* Logo + version */}
                   <div className="flex flex-col items-center gap-1 py-2">
                     <Image
-                      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                      src="/logo-black.svg"
                       alt="Company logo"
                       width={32}
                       height={32}
-                      className="size-8 rounded-full object-cover"
+                      className="size-8 object-contain dark:hidden"
+                    />
+                    <Image
+                      src="/logo-white.svg"
+                      alt="Company logo"
+                      width={32}
+                      height={32}
+                      className="size-8 object-contain hidden dark:block"
                     />
                     <span className="text-[10px] text-neutral-400 dark:text-neutral-500">v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
                   </div>
@@ -143,7 +163,7 @@ export default function Navigation() {
 
             {/* What's a DPP? */}
             <a
-              href="https://data.europa.eu/en/news-events/news/eus-digital-product-passport-advancing-transparency-and-sustainability"
+              href="https://textiletracelatam.com/blog/que-es-pasaporte-digital-producto/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-colors"
@@ -155,7 +175,7 @@ export default function Navigation() {
           {/* Mobile actions (< lg) */}
           <div className="flex items-center gap-2 shrink-0 lg:hidden">
             <a
-              href="https://data.europa.eu/en/news-events/news/eus-digital-product-passport-advancing-transparency-and-sustainability"
+              href="https://textiletracelatam.com/blog/que-es-pasaporte-digital-producto/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md px-3 py-2 text-sm font-medium text-primary-600 hover:bg-primary-100 hover:text-primary-800 dark:text-primary-100 dark:hover:bg-primary-600 dark:hover:text-white"
@@ -188,7 +208,20 @@ export default function Navigation() {
           <div className="divide-y divide-neutral-200 rounded-lg bg-white shadow-lg outline outline-neutral-900/5 dark:divide-neutral-700 dark:bg-neutral-800 dark:shadow-none dark:-outline-offset-1 dark:outline-neutral-700">
             <div className="pt-3 pb-2">
               <div className="flex items-center justify-between px-4">
-                <span className="text-lg font-bold text-primary-500 dark:text-primary-300">My App</span>
+                <Image
+                  src="/logo_text-black.svg"
+                  alt="Logo"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto dark:hidden"
+                />
+                <Image
+                  src="/logo_text-white.svg"
+                  alt="Logo"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto hidden dark:block"
+                />
                 <div className="-mr-2">
                   <button
                     onClick={() => setOpen(false)}
@@ -261,11 +294,18 @@ export default function Navigation() {
             {/* Logo + version */}
             <div className="flex flex-col items-center gap-2 px-4 py-4">
               <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                src="/logo-black.svg"
                 alt="Company logo"
                 width={48}
                 height={48}
-                className="size-12 rounded-full object-cover"
+                className="size-12 object-contain dark:hidden"
+              />
+              <Image
+                src="/logo-white.svg"
+                alt="Company logo"
+                width={48}
+                height={48}
+                className="size-12 object-contain hidden dark:block"
               />
               <span className="text-[10px] text-neutral-400 dark:text-neutral-500">v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
             </div>

@@ -8,11 +8,18 @@ export default function Footer() {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <Image
-            src={appConfig.logo}
+            src="/logo-black.svg"
             alt={appConfig.name}
-            width={120}
+            width={40}
             height={40}
-            className="h-10 w-auto object-contain"
+            className="h-10 w-auto object-contain dark:hidden"
+          />
+          <Image
+            src="/logo-white.svg"
+            alt={appConfig.name}
+            width={40}
+            height={40}
+            className="h-10 w-auto object-contain hidden dark:block"
           />
         </div>
 
