@@ -35,32 +35,34 @@ export default function ImageCarousel({ images }: { images: ProductImage[] }) {
       {/* Carousel viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex items-center">
-          {images.map((slide, index) => {
-            const isActive = index === selectedIndex;
-            return (
-              <div
-                key={index}
-                className="min-w-0 grow-0 shrink-0 basis-[55%] sm:basis-[40%] md:basis-[30%] lg:basis-[22%] xl:basis-[18%] px-0.5"
-              >
-                <div
-                  className="transition-transform duration-300 ease-in-out origin-center"
-                  style={{
-                    transform: isActive ? "scale(1)" : "scale(0.8)",
-                  }}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    width={800}
-                    height={1067}
-                    className="w-full max-h-[40vh] rounded-2xl object-cover"
-                    style={{ aspectRatio: "3 / 4" }}
-                    draggable={false}
-                  />
-                </div>
-              </div>
-            );
-          })}
+          {images && images.length
+            ? images.map((slide, index) => {
+                const isActive = index === selectedIndex;
+                return (
+                  <div
+                    key={index}
+                    className="min-w-0 grow-0 shrink-0 basis-[55%] sm:basis-[40%] md:basis-[30%] lg:basis-[22%] xl:basis-[18%] px-0.5"
+                  >
+                    <div
+                      className="transition-transform duration-300 ease-in-out origin-center"
+                      style={{
+                        transform: isActive ? "scale(1)" : "scale(0.8)",
+                      }}
+                    >
+                      <Image
+                        src={slide.src}
+                        alt={slide.alt}
+                        width={800}
+                        height={1067}
+                        className="w-full max-h-[40vh] rounded-2xl object-cover"
+                        style={{ aspectRatio: "3 / 4" }}
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+                );
+              })
+            : null}
         </div>
       </div>
 
@@ -77,18 +79,20 @@ export default function ImageCarousel({ images }: { images: ProductImage[] }) {
 
         {/* Dots – always visible */}
         <div className="flex items-center gap-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                index === selectedIndex
-                  ? "w-2.5 h-2.5 bg-neutral-800 dark:bg-neutral-100"
-                  : "w-2 h-2 bg-neutral-300 dark:bg-neutral-600"
-              }`}
-            />
-          ))}
+          {images && images.length
+            ? images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    index === selectedIndex
+                      ? "w-2.5 h-2.5 bg-neutral-800 dark:bg-neutral-100"
+                      : "w-2 h-2 bg-neutral-300 dark:bg-neutral-600"
+                  }`}
+                />
+              ))
+            : null}
         </div>
 
         {/* Next arrow – desktop only */}

@@ -8,7 +8,7 @@ type SocialLink = {
 
 export const appConfig = {
   name: "Textile Trace LATAM",
-
+  ttlApiHost: process.env.NEXT_PUBLIC_TTL_API_HOST || "http://localhost:9090",
   footerLinks: [
     { name: "About", href: "#" },
     { name: "Blog", href: "#" },
@@ -17,7 +17,6 @@ export const appConfig = {
     { name: "Accessibility", href: "#" },
     { name: "Partners", href: "#" },
   ],
-
   socials: [
     {
       name: "Facebook",

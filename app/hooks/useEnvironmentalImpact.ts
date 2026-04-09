@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useProductId } from "./useProductId";
+import { appConfig } from "../config";
 
 export type ImpactLevel = "min" | "low" | "mid" | "high" | "very high";
 export type ChemicalCompliance = "certified" | "yes" | "no";
@@ -24,7 +25,7 @@ export function useEnvironmentalImpact() {
   const [data, setData] = useState<EnvironmentalImpact | null>(null);
 
   useEffect(() => {
-    fetch(`/api/product/${id}/environmental-impact`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}/environmental-impact`)
       .then((res) => res.json())
       .then((d) => setData(d));
   }, [id]);

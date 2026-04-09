@@ -5,7 +5,6 @@ import ImageCarousel from "@/app/components/ImageCarousel";
 import AppDialog from "@/app/components/AppDialog";
 import { useProduct } from "@/app/context/ProductContext";
 
-
 export default function HomeContent() {
   const product = useProduct();
   const [descriptionOpen, setDescriptionOpen] = useState(false);
@@ -63,7 +62,11 @@ export default function HomeContent() {
 
       {/* Description dialog */}
       {product && (
-        <AppDialog open={descriptionOpen} onClose={setDescriptionOpen} title={product.title}>
+        <AppDialog
+          open={descriptionOpen}
+          onClose={setDescriptionOpen}
+          title={product.title}
+        >
           <p className="text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
             {product.description}
           </p>
@@ -88,9 +91,7 @@ function DetailItem({ label, value }: { label: string; value: string }) {
       <p className="text-xs font-semibold tracking-widest uppercase text-neutral-900 dark:text-neutral-100">
         {label}
       </p>
-      <p className="text-sm text-neutral-500 dark:text-neutral-400">
-        {value}
-      </p>
+      <p className="text-sm text-neutral-500 dark:text-neutral-400">{value}</p>
     </div>
   );
 }

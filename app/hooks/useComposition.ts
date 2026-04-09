@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useProductId } from "./useProductId";
+import { appConfig } from "../config";
 
 export type CompositionMaterial = {
   name: string;
@@ -20,7 +21,7 @@ export function useComposition() {
   const [data, setData] = useState<Composition | null>(null);
 
   useEffect(() => {
-    fetch(`/api/product/${id}/composition`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}/materials`)
       .then((res) => res.json())
       .then((d) => setData(d));
   }, [id]);

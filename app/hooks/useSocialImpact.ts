@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useProductId } from "./useProductId";
 import type { ProductImage } from "../context/ProductContext";
+import { appConfig } from "../config";
 
 export type ComplianceStatus = "compliant" | "non-compliant" | "certified";
 
@@ -24,7 +25,7 @@ export function useSocialImpact() {
   const [data, setData] = useState<SocialImpact | null>(null);
 
   useEffect(() => {
-    fetch(`/api/product/${id}/social-impact`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}/social-impact`)
       .then((res) => res.json())
       .then((d) => setData(d));
   }, [id]);
