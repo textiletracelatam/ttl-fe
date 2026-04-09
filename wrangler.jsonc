@@ -3,5 +3,8 @@
   "compatibility_date": "2026-02-10",
   "assets": {
     "directory": "./out"
+  },
+  "vars": {
+    "NEXT_PUBLIC_TTL_API_HOST": "https://apidev.textiletracelatam.com"
   }
 }

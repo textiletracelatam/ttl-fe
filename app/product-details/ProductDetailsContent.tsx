@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useProduct } from "@/app/context/ProductContext";
 import { useProductId } from "@/app/hooks/useProductId";
 
-
 export default function ProductDetailsContent() {
   const product = useProduct();
   const router = useRouter();
@@ -100,7 +99,6 @@ export default function ProductDetailsContent() {
       <p className="sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
         ← Swipe for home
       </p>
-
     </div>
   );
 }

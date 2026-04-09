@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useProductId } from "./useProductId";
 import type { ProductImage } from "../context/ProductContext";
+import { appConfig } from "../config";
 
 export type MaterialInnovation = {
   images: ProductImage[];
@@ -16,7 +17,7 @@ export function useMaterialInnovation() {
   const [data, setData] = useState<MaterialInnovation | null>(null);
 
   useEffect(() => {
-    fetch(`/api/product/${id}/material-innovation`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}/material-innovation`)
       .then((res) => res.json())
       .then((d) => setData(d));
   }, [id]);

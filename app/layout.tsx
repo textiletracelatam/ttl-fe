@@ -3,9 +3,8 @@ import { Roboto, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-
 import Providers from "./components/Providers";
-
+ 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],

@@ -4,21 +4,16 @@ import { Suspense, useEffect, useState } from "react";
 import { ProductProvider } from "../context/ProductContext";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  const [ready, setReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    import("../mocks/browser").then(({ worker }) =>
-      worker.start({ onUnhandledRequest: "bypass" }).then(() => setReady(true))
-    );
-  }, []);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
 
-  if (!ready) return null;
+  if (!mounted) return null; // avoid hydration mismatch
 
   return (
     <Suspense>
-      <ProductProvider>
-        {children}
-      </ProductProvider>
+      <ProductProvider>{children}</ProductProvider>
     </Suspense>
   );
 }

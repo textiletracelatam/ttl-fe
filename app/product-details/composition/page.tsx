@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import DetailPageLayout from "@/app/components/DetailPageLayout";
-import { useComposition, type CompositionMaterial } from "@/app/hooks/useComposition";
+import {
+  useComposition,
+  type CompositionMaterial,
+} from "@/app/hooks/useComposition";
 
 const RADIAN = Math.PI / 180;
 
@@ -59,8 +62,8 @@ export default function CompositionPage() {
               label={renderRadialLabel}
               labelLine={false}
             >
-              {data.materials.map((mat) => (
-                <Cell key={mat.name} fill={mat.color} />
+              {data.materials.map((mat, index) => (
+                <Cell key={index} fill={mat.color} />
               ))}
             </Pie>
           </PieChart>
@@ -69,8 +72,8 @@ export default function CompositionPage() {
 
       {/* Main material cards */}
       <div className="space-y-4">
-        {mainMaterials.map((mat) => (
-          <MaterialCard key={mat.name} material={mat} />
+        {mainMaterials.map((mat, index) => (
+          <MaterialCard key={index} material={mat} />
         ))}
       </div>
 
@@ -79,8 +82,8 @@ export default function CompositionPage() {
         <>
           {showAll && (
             <div className="space-y-4 mt-4">
-              {secondaryMaterials.map((mat) => (
-                <MaterialCard key={mat.name} material={mat} />
+              {secondaryMaterials.map((mat, index) => (
+                <MaterialCard key={index} material={mat} />
               ))}
             </div>
           )}

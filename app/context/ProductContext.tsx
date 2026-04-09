@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useProductId } from "../hooks/useProductId";
+import { appConfig } from "../config";
 
 export type ProductImage = {
   src: string;
@@ -44,7 +45,7 @@ export function ProductProvider({
 
   useEffect(() => {
     if (!id) return;
-    fetch(`/api/product/${id}`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);

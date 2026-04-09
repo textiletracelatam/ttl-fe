@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useProductId } from "./useProductId";
+import { appConfig } from "../config";
 
 export type Certification = {
   name: string;
@@ -17,7 +18,7 @@ export function useCertifications() {
   const [certifications, setCertifications] = useState<Certification[]>([]);
 
   useEffect(() => {
-    fetch(`/api/product/${id}/certifications`)
+    fetch(`${appConfig.ttlApiHost}/api/v1/products/${id}/certifications`)
       .then((res) => res.json())
       .then((data) => setCertifications(data));
   }, [id]);
