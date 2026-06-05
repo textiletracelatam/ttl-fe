@@ -19,6 +19,7 @@ export type ProductDetail = {
   completion?: number;
   /** Environmental impact 0–100, 0=green 100=red, shown as gradient bg */
   impact?: number;
+  postConsumptionPlanExists?: boolean;
 };
 
 export type Product = {

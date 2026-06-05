@@ -4,6 +4,7 @@ import { useState } from "react";
 import ImageCarousel from "@/app/components/ImageCarousel";
 import AppDialog from "@/app/components/AppDialog";
 import { useProduct } from "@/app/context/ProductContext";
+import Link from "next/link";
 
 export default function HomeContent() {
   const product = useProduct();
@@ -56,9 +57,15 @@ export default function HomeContent() {
 
       <div className="flex-1" />
 
-      <p className="sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
+      <p className="lg:hidden sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
         Swipe for more →
       </p>
+
+      <Link href="/product-details">
+        <p className="hidden lg:block sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
+          Click for more →
+        </p>
+      </Link>
 
       {/* Description dialog */}
       {product && (
@@ -67,7 +74,7 @@ export default function HomeContent() {
           onClose={setDescriptionOpen}
           title={product.title}
         >
-          <p className="text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
+          <p className="overflow-y-auto h-60 text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
             {product.description}
           </p>
           <div className="mt-6">

@@ -8,7 +8,7 @@ export default function MaterialInnovationPage() {
   const data = useMaterialInnovation();
 
   return (
-    <DetailPageLayout title="Material Innovation">
+    <DetailPageLayout title="Post-consumption plan">
       {data && (
         <>
           <ImageCarousel images={data.images} />

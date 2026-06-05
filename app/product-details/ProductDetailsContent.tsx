@@ -4,6 +4,26 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useProduct } from "@/app/context/ProductContext";
 import { useProductId } from "@/app/hooks/useProductId";
+import Link from "next/link";
+
+function getImpactBgColor(impact: number) {
+  const colorMilestones: Record<string, number> = {
+    "bg-secondary-500": 0,
+    "bg-blue-400": 1,
+    "bg-yellow-400": 15,
+    "bg-primary-400": 40,
+    "bg-red-500": 60,
+    "bg-red-900": 80,
+  };
+
+  let bgColor = "";
+  for (const key of Object.keys(colorMilestones)) {
+    if (impact >= colorMilestones[key]) {
+      bgColor = key;
+    }
+  }
+  return bgColor;
+}
 
 export default function ProductDetailsContent() {
   const product = useProduct();
@@ -12,7 +32,6 @@ export default function ProductDetailsContent() {
 
   if (!product) return null;
 
-  // Split: cards with images go in the grid, cards without go below
   const gridCards = product.details?.filter((d) => d.image) ?? [];
   const fullWidthCards = product.details?.filter((d) => !d.image) ?? [];
 
@@ -21,84 +40,87 @@ export default function ProductDetailsContent() {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto">
-      <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-3xl mx-auto w-full">
-        {/* Title */}
-        <h2 className="text-center font-serif text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 mb-6">
+    // Assumes ~64px nav. Adjust the offset to match your actual nav height.
+    <div className="flex flex-col overflow-hidden h-full">
+      <div className="flex flex-col h-full min-h-0 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
+        <h2 className="flex-none text-center font-serif text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 mb-4">
           All about {product.name}
         </h2>
 
-        {/* 2-column grid */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        {/* Grid — fills remaining height */}
+        <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-3 md:gap-4 flex-1 min-h-0">
           {gridCards.map((detail) => (
             <button
               key={detail.title}
               onClick={() => navigate(detail.route)}
-              className="relative flex flex-col items-start rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-4 sm:p-5 text-left cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors overflow-hidden"
+              className="relative flex flex-col items-start rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-4 text-left cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors overflow-hidden min-h-0"
             >
-              {/* Impact gradient overlay: green (0%) to red (100%) */}
-              {detail.impact != null && (
+              {!!detail.impact && (
                 <div
-                  className="absolute inset-0 opacity-20 dark:opacity-15"
-                  style={{
-                    background: `linear-gradient(to right, var(--color-green-400) ${100 - detail.impact}%, var(--color-red-400) 100%)`,
-                  }}
+                  className={`absolute inset-0 opacity-75 dark:opacity-50 ${getImpactBgColor(detail.impact)}`}
                 />
               )}
-
-              {/* Fill overlay for completion — gradient left to right, blending into bg */}
-              {detail.completion != null && (
-                <div
-                  className="absolute inset-0 opacity-20 dark:opacity-15"
-                  style={{
-                    background: `linear-gradient(to right, var(--color-green-400) ${detail.completion}%, transparent ${detail.completion + 20}%)`,
-                  }}
-                />
+              {!!detail.completion && (
+                <div className="absolute inset-0 opacity-75 dark:opacity-50 bg-secondary-500" />
               )}
-
-              <div className="relative z-10 flex flex-col items-start w-full">
-                <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white">
+              <div className="z-10 flex flex-col items-start w-full min-h-0 overflow-hidden">
+                <h3 className="flex-none text-sm font-bold text-neutral-900 dark:text-white">
                   {detail.title}
                 </h3>
-                <p className="mt-1 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="flex-none mt-1 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed line-clamp-2">
                   {detail.description}
                 </p>
                 {detail.image && (
-                  <Image
-                    src={detail.image}
-                    alt={detail.title}
-                    width={200}
-                    height={200}
-                    className="mt-3 self-center size-24 sm:size-28 rounded-2xl object-cover"
-                  />
+                  <div className="flex-1 min-h-0 flex items-center justify-center w-full mt-2 overflow-hidden">
+                    <Image
+                      src={detail.image}
+                      alt={detail.title}
+                      width={200}
+                      height={200}
+                      className="rounded-2xl object-contain hidden md:block"
+                      style={{ maxHeight: "100%", width: "auto" }}
+                    />
+                  </div>
                 )}
               </div>
             </button>
           ))}
         </div>
 
-        {/* Full-width cards (no image) */}
+        {/* Full-width cards */}
         {fullWidthCards.map((detail) => (
           <button
             key={detail.title}
             onClick={() => navigate(detail.route)}
-            className="mt-4 w-full flex flex-col items-center rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-5 sm:p-6 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
+            className="relative flex-none mt-3 w-full flex flex-col items-center rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-4 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
           >
-            <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white">
-              {detail.title}
-            </h3>
-            <p className="mt-1 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md">
-              {detail.description}
-            </p>
+            {detail.postConsumptionPlanExists === true && (
+              <div className="absolute inset-0 opacity-75 dark:opacity-50 bg-secondary-500 rounded-2xl" />
+            )}
+            {detail.postConsumptionPlanExists === false && (
+              <div className="absolute inset-0 opacity-80 dark:opacity-50 bg-red-500 rounded-2xl" />
+            )}
+            <div className="z-10 flex flex-col items-center w-full">
+              <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
+                {detail.title}
+              </h3>
+              <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md line-clamp-2">
+                {detail.description}
+              </p>
+            </div>
           </button>
         ))}
+
+        {/* Footer */}
+        <p className="flex-none lg:hidden pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+          ← Swipe for home
+        </p>
+        <Link href="/">
+          <p className="flex-none hidden lg:block pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+            ← Click for home
+          </p>
+        </Link>
       </div>
-
-      <div className="flex-1" />
-
-      <p className="sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
-        ← Swipe for home
-      </p>
     </div>
   );
 }

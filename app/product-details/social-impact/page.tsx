@@ -59,7 +59,6 @@ export default function SocialImpactPage() {
 
           <a
             href={data.linkUrl}
-            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 mt-8 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
           >
