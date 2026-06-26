@@ -10,12 +10,12 @@ export const appConfig = {
   name: "Textile Trace LATAM",
   ttlApiHost: process.env.NEXT_PUBLIC_TTL_API_HOST || "http://localhost:9090",
   footerLinks: [
-    { name: "About", href: "https://textiletracelatam.com/nosotros/" },
-    { name: "Blog", href: "https://textiletracelatam.com/blog/" },
-    { name: "Jobs", href: "https://textiletracelatam.com/empleo/" },
-    { name: "Contact us", href: "https://textiletracelatam.com/contactanos/" },
-    { name: "Services", href: "https://textiletracelatam.com/servicios/" },
-    { name: "Partners", href: "https://textiletracelatam.com/aliados/" },
+    { name: "about", href: "https://textiletracelatam.com/nosotros/" },
+    { name: "blog", href: "https://textiletracelatam.com/blog/" },
+    { name: "jobs", href: "https://textiletracelatam.com/empleo/" },
+    { name: "contact", href: "https://textiletracelatam.com/contactanos/" },
+    { name: "services", href: "https://textiletracelatam.com/servicios/" },
+    { name: "partners", href: "https://textiletracelatam.com/aliados/" },
   ],
   socials: [
     {

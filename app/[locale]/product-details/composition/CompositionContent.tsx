@@ -1,14 +1,14 @@
 "use client";
 
+import DetailPageLayout from "@/app/components/DetailPageLayout";
 import { useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-import DetailPageLayout from "@/app/components/DetailPageLayout";
 import {
   useComposition,
   type CompositionMaterial,
 } from "@/app/hooks/useComposition";
 
-export default function CompositionPage() {
+export default function CompositionContent() {
   const data = useComposition();
   const [showAll, setShowAll] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -48,12 +48,20 @@ export default function CompositionPage() {
                     opacity={
                       activeIndex === null || activeIndex === index ? 1 : 0.45
                     }
-                    style={{ transition: "opacity 0.2s ease", cursor: "pointer" }}
+                    style={{
+                      transition: "opacity 0.2s ease",
+                      cursor: "pointer",
+                    }}
                   />
                 ))}
               </Pie>
               <Tooltip
-                formatter={(value: number) => [`${value}%`, ""]}
+                formatter={(value) => {
+                  if (typeof value === "number") {
+                    return [`${value}%`, ""];
+                  }
+                  return value;
+                }}
                 contentStyle={{
                   borderRadius: "0.75rem",
                   border: "none",

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { appConfig } from "../config";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const translation = useTranslations("footer");
   return (
     <footer className="bg-background">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-10 sm:py-12 lg:px-8">
@@ -34,7 +36,7 @@ export default function Footer() {
               href={item.href}
               className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
             >
-              {item.name}
+              {translation(item.name)}
             </a>
           ))}
         </nav>
@@ -52,8 +54,8 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-10 text-center text-sm/6 text-neutral-600 dark:text-neutral-400">
-          &copy; {new Date().getFullYear()} {appConfig.name}. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} {appConfig.name}.{" "}
+          {translation("rights")}
         </p>
       </div>
     </footer>

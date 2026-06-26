@@ -1,5 +1,7 @@
-import PageSwiper from "@/app/components/PageSwiper";
+// app/page.tsx  ← at root, NOT inside [locale]
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/i18n";
 
-export default function Home() {
-  return <PageSwiper initialSlide={0} />;
+export default function RootPage() {
+  redirect(`/${defaultLocale}`);
 }

@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "home": "Home",
+    "details": "Product Details",
+    "dpp": "What's a DPP?"
+  },
+  "home": {
+    "click": "Click for more →"
+  },
+  "details": {
+    "click": "← Click for home"
+  },
+  "footer": {
+    "about": "About Us",
+    "blog": "Blog",
+    "jobs": "Jobs",
+    "contact": "Contact Us",
+    "services": "Our Services",
+    "partners": "Partners",
+    "rights": "All rights reserved."
+  }
+}

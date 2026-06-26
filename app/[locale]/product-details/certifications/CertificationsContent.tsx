@@ -3,7 +3,7 @@
 import DetailPageLayout from "@/app/components/DetailPageLayout";
 import { useCertifications } from "@/app/hooks/useCertifications";
 
-export default function CertificationsPage() {
+export default function CertificationsContent() {
   const certifications = useCertifications();
 
   return (

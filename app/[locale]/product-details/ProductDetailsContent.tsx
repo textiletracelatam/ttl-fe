@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useProduct } from "@/app/context/ProductContext";
 import { useProductId } from "@/app/hooks/useProductId";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 
 function getImpactBgColor(impact: number) {
   const colorMilestones: Record<string, number> = {
@@ -26,6 +26,8 @@ function getImpactBgColor(impact: number) {
 }
 
 export default function ProductDetailsContent() {
+  const translation = useTranslations("details");
+  const locale = useLocale();
   const product = useProduct();
   const router = useRouter();
   const id = useProductId();
@@ -36,7 +38,7 @@ export default function ProductDetailsContent() {
   const fullWidthCards = product.details?.filter((d) => !d.image) ?? [];
 
   function navigate(route: string) {
-    router.push(`/product-details/${route}?id=${encodeURIComponent(id)}`);
+    router.push(`/${locale}/product-details/${route}?id=${encodeURIComponent(id)}`);
   }
 
   return (
@@ -48,7 +50,7 @@ export default function ProductDetailsContent() {
         </h2>
 
         {/* Grid — fills remaining height */}
-        <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-3 md:gap-4 flex-1 min-h-0">
+        <div className="grid grid-cols-2 grid-rows-3 md:grid-flow-col md:grid-cols-3 md:grid-rows-2 gap-3 md:gap-4 flex-1 min-h-0">
           {gridCards.map((detail) => (
             <button
               key={detail.title}
@@ -70,7 +72,8 @@ export default function ProductDetailsContent() {
                 <p className="flex-none mt-1 text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed line-clamp-2">
                   {detail.description}
                 </p>
-                {detail.image && (
+                {/* TODO: See how to use detail images in the future based on UX/UI work */}
+                {/* {detail.image && (
                   <div className="flex-1 min-h-0 flex items-center justify-center w-full mt-2 overflow-hidden">
                     <Image
                       src={detail.image}
@@ -81,7 +84,7 @@ export default function ProductDetailsContent() {
                       style={{ maxHeight: "100%", width: "auto" }}
                     />
                   </div>
-                )}
+                )} */}
               </div>
             </button>
           ))}
@@ -115,9 +118,9 @@ export default function ProductDetailsContent() {
         <p className="flex-none lg:hidden pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
           ← Swipe for home
         </p>
-        <Link href="/">
+        <Link href={`/${locale}/?id=${encodeURIComponent(id)}`}>
           <p className="flex-none hidden lg:block pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
-            ← Click for home
+            {translation("click")}
           </p>
         </Link>
       </div>

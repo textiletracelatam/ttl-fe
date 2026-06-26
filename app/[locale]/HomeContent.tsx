@@ -5,8 +5,13 @@ import ImageCarousel from "@/app/components/ImageCarousel";
 import AppDialog from "@/app/components/AppDialog";
 import { useProduct } from "@/app/context/ProductContext";
 import Link from "next/link";
+import { useProductId } from "../hooks/useProductId";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function HomeContent() {
+  const translation = useTranslations("home");
+  const locale = useLocale();
+  const id = useProductId();
   const product = useProduct();
   const [descriptionOpen, setDescriptionOpen] = useState(false);
 
@@ -61,9 +66,9 @@ export default function HomeContent() {
         Swipe for more →
       </p>
 
-      <Link href="/product-details">
+      <Link href={`/${locale}/product-details?id=${encodeURIComponent(id)}`}>
         <p className="hidden lg:block sticky bottom-0 pb-6 pt-10 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
-          Click for more →
+          {translation("click")}
         </p>
       </Link>
 
@@ -74,14 +79,14 @@ export default function HomeContent() {
           onClose={setDescriptionOpen}
           title={product.title}
         >
-          <p className="overflow-y-auto h-60 text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
+          <p className="overflow-y-auto p-3 h-60 text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
             {product.description}
           </p>
           <div className="mt-6">
             <button
               type="button"
               onClick={() => setDescriptionOpen(false)}
-              className="inline-flex w-full justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-primary-600 dark:shadow-none dark:hover:bg-primary-500"
+              className="inline-flex w-full justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-primary-600 dark:shadow-none dark:hover:bg-primary-500 cursor-pointer"
             >
               Close
             </button>
