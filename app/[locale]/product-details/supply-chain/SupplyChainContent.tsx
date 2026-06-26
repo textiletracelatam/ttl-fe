@@ -3,23 +3,22 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import useEmblaCarousel from "embla-carousel-react";
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-} from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import DetailPageLayout from "@/app/components/DetailPageLayout";
 import ImageCarousel from "@/app/components/ImageCarousel";
-import { useSupplyChain, type SupplyChainStage } from "@/app/hooks/useSupplyChain";
+import {
+  useSupplyChain,
+  type SupplyChainStage,
+} from "@/app/hooks/useSupplyChain";
 
 const SupplyChainMap = dynamic(
   () => import("@/app/components/SupplyChainMap"),
   { ssr: false },
 );
 
-export default function SupplyChainPage() {
+export default function SupplyChainContent() {
   const supplyChain = useSupplyChain();
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [modalStage, setModalStage] = useState<SupplyChainStage | null>(null);
@@ -176,9 +175,7 @@ export default function SupplyChainPage() {
                 <button
                   onClick={() => handleStageOpen(stage.id)}
                   className={`w-full text-left rounded-2xl bg-neutral-100 dark:bg-neutral-800 px-4 py-3 cursor-pointer transition-shadow ${
-                    isSelected
-                      ? "ring-2 ring-blue-500 dark:ring-blue-400"
-                      : ""
+                    isSelected ? "ring-2 ring-blue-500 dark:ring-blue-400" : ""
                   }`}
                 >
                   <p className="text-[10px] font-semibold text-blue-500 dark:text-blue-400">

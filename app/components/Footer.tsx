@@ -1,28 +1,31 @@
 import Image from "next/image";
 import { appConfig } from "../config";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const translation = useTranslations("footer");
   return (
     <footer className="bg-background">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-10 sm:py-12 lg:px-8">
         {/* Logo */}
-        <div className="flex justify-center mb-8">
-          <Image
-            src="/logo-black.svg"
-            alt={appConfig.name}
-            width={40}
-            height={40}
-            className="h-10 w-auto object-contain dark:hidden"
-          />
-          <Image
-            src="/logo-white.svg"
-            alt={appConfig.name}
-            width={40}
-            height={40}
-            className="h-10 w-auto object-contain hidden dark:block"
-          />
-        </div>
-
+        <a href="https://textiletracelatam.com/">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/logo-black.svg"
+              alt={appConfig.name}
+              width={40}
+              height={40}
+              className="h-10 w-auto object-contain dark:hidden"
+            />
+            <Image
+              src="/logo-white.svg"
+              alt={appConfig.name}
+              width={40}
+              height={40}
+              className="h-10 w-auto object-contain hidden dark:block"
+            />
+          </div>
+        </a>
         <nav
           aria-label="Footer"
           className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6"
@@ -33,7 +36,7 @@ export default function Footer() {
               href={item.href}
               className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
             >
-              {item.name}
+              {translation(item.name)}
             </a>
           ))}
         </nav>
@@ -42,6 +45,7 @@ export default function Footer() {
             <a
               key={item.name}
               href={item.href}
+              target="_blank"
               className="text-neutral-600 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-white"
             >
               <span className="sr-only">{item.name}</span>
@@ -50,8 +54,8 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-10 text-center text-sm/6 text-neutral-600 dark:text-neutral-400">
-          &copy; {new Date().getFullYear()} {appConfig.name}. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} {appConfig.name}.{" "}
+          {translation("rights")}
         </p>
       </div>
     </footer>

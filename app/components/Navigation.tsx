@@ -18,6 +18,7 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 const subpages = [
   { title: "Supply Chain", route: "supply-chain" },
@@ -26,10 +27,13 @@ const subpages = [
   { title: "Social Impact", route: "social-impact" },
   { title: "Material Innovation", route: "material-innovation" },
   { title: "Garment Care", route: "garment-care" },
+  { title: "Post Consumption Plan", route: "post-consumption-plan" },
   { title: "Certifications", route: "certifications" },
 ];
 
 export default function Navigation() {
+  const translation = useTranslations("nav");
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -44,8 +48,8 @@ export default function Navigation() {
     setOpen(false);
   }
 
-  const homePN = "/";
-  const pdPN = "/product-details";
+  const homePN = `/${locale}`;
+  const pdPN = `/${locale}/product-details`;
 
   return (
     <header className="sticky top-0 z-40 bg-background">
@@ -53,10 +57,7 @@ export default function Navigation() {
         <div className="flex h-14 sm:h-16 items-center justify-between">
           {/* Logo */}
           <div className="shrink-0">
-            <button
-              onClick={() => navigate(homePN)}
-              className="cursor-pointer"
-            >
+            <button onClick={() => navigate(homePN)} className="cursor-pointer">
               <Image
                 src="/logo_text-black.svg"
                 alt="Logo"
@@ -85,7 +86,7 @@ export default function Navigation() {
                   : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
               }`}
             >
-              Home
+              {translation("home")}
             </button>
 
             {/* Product Details flyout */}
@@ -97,7 +98,7 @@ export default function Navigation() {
                     : "text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                 }`}
               >
-                Product Details
+                {translation("details")}
                 <ChevronDownIcon className="size-4 text-neutral-400 group-data-open:rotate-180 transition-transform" />
               </PopoverButton>
 
@@ -155,7 +156,9 @@ export default function Navigation() {
                       height={32}
                       className="size-8 object-contain hidden dark:block"
                     />
-                    <span className="text-[10px] text-neutral-400 dark:text-neutral-500">v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
+                    <span className="text-[10px] text-neutral-400 dark:text-neutral-500">
+                      v{process.env.NEXT_PUBLIC_APP_VERSION}
+                    </span>
                   </div>
                 </div>
               </PopoverPanel>
@@ -168,7 +171,7 @@ export default function Navigation() {
               rel="noopener noreferrer"
               className="rounded-md px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-colors"
             >
-              What&apos;s a DPP?
+              {translation("dpp")}
             </a>
           </div>
 
@@ -243,7 +246,7 @@ export default function Navigation() {
                       : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
                   }`}
                 >
-                  Home
+                  {translation("home")}
                 </button>
 
                 {/* Product Details — collapsible */}
@@ -255,7 +258,7 @@ export default function Navigation() {
                         : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white"
                     }`}
                   >
-                    Product Details
+                    {translation("details")}
                     <ChevronDownIcon className="size-5 text-neutral-400 transition-transform ui-open:rotate-180" />
                   </DisclosureButton>
                   <DisclosurePanel className="space-y-1 pl-3">
@@ -307,7 +310,9 @@ export default function Navigation() {
                 height={48}
                 className="size-12 object-contain hidden dark:block"
               />
-              <span className="text-[10px] text-neutral-400 dark:text-neutral-500">v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
+              <span className="text-[10px] text-neutral-400 dark:text-neutral-500">
+                v{process.env.NEXT_PUBLIC_APP_VERSION}
+              </span>
             </div>
           </div>
         </DialogPanel>

@@ -2,9 +2,14 @@
 
 import DetailPageLayout from "@/app/components/DetailPageLayout";
 import ImageCarousel from "@/app/components/ImageCarousel";
+import { useProductId } from "@/app/hooks/useProductId";
 import { useSocialImpact } from "@/app/hooks/useSocialImpact";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 
-export default function SocialImpactPage() {
+export default function SocialImpactContent() {
+  const locale = useLocale();
+  const id = useProductId();
   const data = useSocialImpact();
 
   return (
@@ -57,14 +62,12 @@ export default function SocialImpactPage() {
             </div>
           </div>
 
-          <a
-            href={data.linkUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={`/${locale}/product-details?id=${encodeURIComponent(id)}`}
             className="inline-flex items-center gap-1 mt-8 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
           >
             {data.linkLabel} &rarr;
-          </a>
+          </Link>
         </>
       )}
     </DetailPageLayout>

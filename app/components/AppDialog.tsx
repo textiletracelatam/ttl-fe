@@ -23,7 +23,7 @@ export default function AppDialog({
       <div className="fixed inset-0 z-10 flex items-center justify-center p-4">
         <DialogPanel
           transition
-          className="relative w-full max-w-lg transform overflow-hidden rounded-lg bg-white px-6 pt-6 pb-5 text-left shadow-xl transition-all data-closed:scale-95 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:p-8 dark:bg-neutral-800 dark:outline dark:-outline-offset-1 dark:outline-white/10"
+          className="relative w-full max-w-lg transform rounded-lg bg-white px-6 pt-6 pb-5 text-left shadow-xl transition-all data-closed:scale-95 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:p-8 dark:bg-neutral-800 dark:outline dark:-outline-offset-1 dark:outline-white/10"
         >
           {title && (
             <DialogTitle
