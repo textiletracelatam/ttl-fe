@@ -54,8 +54,8 @@ export default function HomeContent() {
           <div className="grid grid-cols-2 gap-y-8 gap-x-4 pb-10">
             <DetailItem label="BRAND" value={product.brand} />
             <DetailItem label="Made in" value={product.madeIn} />
-            <DetailItem label="ID" value={product.reference} />
-            <DetailItem label="SKU" value={product.sku} />
+            {product.reference ?? <DetailItem label="ID" value={product.reference} />}
+            {product.sku ?? <DetailItem label="SKU" value={product.sku} />}
           </div>
         </div>
       )}
