@@ -53,7 +53,7 @@ export default function EnvironmentalImpactContent() {
           {/* Full-width action cards */}
           <div className="mt-4 space-y-3 sm:space-y-4">
             <Link
-              href={`/product-details/post-consumption-plan?id=${encodeURIComponent(id)}`}
+              href={`/${locale}/product-details/post-consumption-plan?id=${encodeURIComponent(id)}`}
               className="block w-full rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-5 sm:p-6 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
             >
               <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white">
@@ -62,7 +62,7 @@ export default function EnvironmentalImpactContent() {
             </Link>
 
             <Link
-              href={`/product-details/certifications?id=${encodeURIComponent(id)}`}
+              href={`/${locale}/product-details/certifications?id=${encodeURIComponent(id)}`}
               className="block w-full rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-5 sm:p-6 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
             >
               <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white">

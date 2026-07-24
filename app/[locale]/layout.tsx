@@ -48,7 +48,7 @@ export default async function RootLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <html lang="en" className="bg-neutral-50 dark:bg-neutral-900">
+      <html lang={locale} className="bg-neutral-50 dark:bg-neutral-900">
         <body
           className={`${roboto.variable} ${playfair.variable} antialiased flex flex-col min-h-dvh`}
         >
