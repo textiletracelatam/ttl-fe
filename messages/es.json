@@ -16,11 +16,13 @@
   },
   "home": {
     "click": "Haz clic para más →",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "swipe": "Desliza para más"
   },
   "details": {
     "allAbout": "Todo sobre",
-    "click": "← Haz clic para inicio"
+    "click": "← Haz clic para inicio",
+    "swipe": "Desliza para inicio"
   },
   "composition": {
     "showAll": "Mostrar todos los materiales",

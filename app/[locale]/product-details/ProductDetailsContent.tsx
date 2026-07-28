@@ -132,11 +132,11 @@ export default function ProductDetailsContent() {
         ))}
 
         {/* Footer */}
-        <p className="flex-none lg:hidden pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
-          ← Swipe for home
+        <p className="flex-none lg:hidden pb-4 pt-4 text-center text-lg tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+          ← {translation("swipe")}
         </p>
         <Link href={`/${locale}/?id=${encodeURIComponent(id)}`}>
-          <p className="flex-none hidden lg:block pb-4 pt-4 text-center text-xs tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
+          <p className="flex-none hidden lg:block pb-4 pt-4 text-center text-lg tracking-widest uppercase text-neutral-400 dark:text-neutral-500">
             {translation("click")}
           </p>
         </Link>
