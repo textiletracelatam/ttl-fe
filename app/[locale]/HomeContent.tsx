@@ -79,7 +79,7 @@ export default function HomeContent() {
 
       <div className="flex-1" />
 
-      <p className="lg:hidden sticky bottom-0 pb-6 pt-10 text-center text-lg tracking-widest uppercase text-neutral-400 dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
+      <p className="lg:hidden sticky bottom-0 pb-6 pt-10 text-center text-lg tracking-widest uppercase text-black dark:text-neutral-500 bg-linear-to-t from-background from-60% to-transparent">
         {translation("swipe")} →
       </p>
 
