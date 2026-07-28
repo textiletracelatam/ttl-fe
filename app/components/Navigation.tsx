@@ -183,7 +183,7 @@ export default function Navigation() {
               rel="noopener noreferrer"
               className="rounded-md px-3 py-2 text-sm font-medium text-primary-600 hover:bg-primary-100 hover:text-primary-800 dark:text-primary-100 dark:hover:bg-primary-600 dark:hover:text-white"
             >
-              What&apos;s a DPP?
+              {translation("dpp")}
             </a>
             <button
               onClick={() => setOpen(true)}
