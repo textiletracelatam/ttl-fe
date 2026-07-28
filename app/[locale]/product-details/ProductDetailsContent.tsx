@@ -48,14 +48,19 @@ export default function ProductDetailsContent() {
     // Assumes ~64px nav. Adjust the offset to match your actual nav height.
     <div className="flex flex-col overflow-hidden h-full">
       <div className="flex flex-col h-full min-h-0 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
-        <Image
-          src="https://cdndev.textiletracelatam.com/sake/the-sake-project.jpg"
-          alt="Product's post-consumption plan"
-          width={320}
-          height={22}
-          className="w-full md:w-1/2 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
-          draggable={false}
-        />
+        <a
+          href="https://thesakeproject.com/product/yakuruna-bag/"
+          target="_blank"
+        >
+          <Image
+            src="https://cdndev.textiletracelatam.com/sake/the-sake-project.jpg"
+            alt="Product's post-consumption plan"
+            width={320}
+            height={22}
+            className="w-full md:w-1/2 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
+            draggable={false}
+          />
+        </a>
 
         <h2 className="flex-none text-center font-serif text-xl sm:text-3xl text-neutral-900 dark:text-neutral-50 mb-4">
           {translation("allAbout")} {product.name}
