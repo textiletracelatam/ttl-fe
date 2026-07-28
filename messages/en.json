@@ -16,11 +16,13 @@
   },
   "home": {
     "click": "Click for more →",
-    "close": "Close"
+    "close": "Close",
+    "swipe": "Swipe for more"
   },
   "details": {
     "allAbout": "All about",
-    "click": "← Click for home"
+    "click": "← Click for home",
+    "swipe": "Swipe for home"
   },
   "composition": {
     "showAll": "Show all materials",
