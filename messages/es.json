@@ -2,13 +2,36 @@
   "nav": {
     "home": "Inicio",
     "details": "Detalles del producto",
-    "dpp": "¿Qué es un DPP?"
+    "dpp": "¿Qué es un DPP?",
+    "overview": "Información general",
+    "supplyChain": "Recorrido del origen al producto",
+    "composition": "Composición",
+    "environmentalImpact": "Impacto ambiental",
+    "socialImpact": "Impacto social",
+    "materialInnovation": "Innovación en el material",
+    "garmentCare": "Cuidados del producto",
+    "postConsumptionPlan": "Plan de post consumo",
+    "certifications": "Certificaciones",
+    "close": "Cerrar"
   },
   "home": {
-    "click": "Haz clic para más →"
+    "click": "Haz clic para más →",
+    "close": "Cerrar"
   },
   "details": {
+    "allAbout": "Todo sobre",
     "click": "← Haz clic para inicio"
+  },
+  "composition": {
+    "showAll": "Mostrar todos los materiales",
+    "showLess": "Mostrar menos"
+  },
+  "environmentalImpact": {
+    "close": "Cerrar",
+    "learnMore": "Aprende más sobre el producto"
+  },
+  "postConsumptionPlan": {
+    "learnMore": "Aprende más sobre el producto"
   },
   "footer": {
     "about": "Sobre Nosotros",

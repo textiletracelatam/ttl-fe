@@ -11,6 +11,7 @@ export type Recyclability = "yes" | "no" | "partially recyclable";
 export type EnvironmentalImpactIndicator = {
   name: string;
   value: ImpactLevel | ChemicalCompliance | Recyclability;
+  text: string;
 };
 
 export type EnvironmentalImpact = {

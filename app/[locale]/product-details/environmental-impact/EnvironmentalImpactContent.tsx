@@ -6,15 +6,17 @@ import { useEnvironmentalImpact } from "@/app/hooks/useEnvironmentalImpact";
 import { useState } from "react";
 import Link from "next/link";
 import AppDialog from "@/app/components/AppDialog";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 // Adjust this type to match your actual indicator shape
 type Indicator = {
   name: string;
   value: string;
+  text: string;
 };
 
 export default function EnvironmentalImpactContent() {
+  const translation = useTranslations("environmentalImpact");
   const locale = useLocale();
   const data = useEnvironmentalImpact();
   const id = useProductId();
@@ -75,7 +77,7 @@ export default function EnvironmentalImpactContent() {
             href={`/${locale}/product-details?id=${encodeURIComponent(id)}`}
             className="inline-flex items-center gap-1 mt-8 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
           >
-            Learn more &rarr;
+            {translation("learnMore")} &rarr;
           </Link>
         </>
       )}
@@ -88,7 +90,7 @@ export default function EnvironmentalImpactContent() {
           title={selectedIndicator.name}
         >
           <p className="overflow-y-auto p-3 h-60 text-justify text-sm sm:text-base leading-7 text-neutral-700 dark:text-neutral-300">
-            {selectedIndicator.value}
+            {selectedIndicator.text}
           </p>
           <div className="mt-6">
             <button
@@ -96,7 +98,7 @@ export default function EnvironmentalImpactContent() {
               onClick={() => setSelectedIndicator(null)}
               className="inline-flex w-full justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-primary-600 dark:shadow-none dark:hover:bg-primary-500 cursor-pointer"
             >
-              Close
+              {translation("close")}
             </button>
           </div>
         </AppDialog>

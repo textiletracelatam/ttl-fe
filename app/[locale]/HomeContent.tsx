@@ -7,6 +7,7 @@ import { useProduct } from "@/app/context/ProductContext";
 import Link from "next/link";
 import { useProductId } from "../hooks/useProductId";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function HomeContent() {
   const translation = useTranslations("home");
@@ -17,6 +18,15 @@ export default function HomeContent() {
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
+      <Image
+        src="https://cdndev.textiletracelatam.com/sake/the-sake-project.jpg"
+        alt="Product's post-consumption plan"
+        width={320}
+        height={22}
+        className="w-full md:w-1/4 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
+        draggable={false}
+      />
+
       {/* Name — small uppercase label */}
       {product?.name && (
         <p className="text-center text-xs font-medium tracking-[0.25em] uppercase text-neutral-400 dark:text-neutral-500 pt-6 pb-1">
@@ -54,7 +64,9 @@ export default function HomeContent() {
           <div className="grid grid-cols-2 gap-y-8 gap-x-4 pb-10">
             <DetailItem label="BRAND" value={product.brand} />
             <DetailItem label="Made in" value={product.madeIn} />
-            {product.reference ?? <DetailItem label="ID" value={product.reference} />}
+            {product.reference ?? (
+              <DetailItem label="ID" value={product.reference} />
+            )}
             {product.sku ?? <DetailItem label="SKU" value={product.sku} />}
           </div>
         </div>
@@ -88,7 +100,7 @@ export default function HomeContent() {
               onClick={() => setDescriptionOpen(false)}
               className="inline-flex w-full justify-center rounded-md bg-primary-500 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-primary-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:bg-primary-600 dark:shadow-none dark:hover:bg-primary-500 cursor-pointer"
             >
-              Close
+              {translation("close")}
             </button>
           </div>
         </AppDialog>

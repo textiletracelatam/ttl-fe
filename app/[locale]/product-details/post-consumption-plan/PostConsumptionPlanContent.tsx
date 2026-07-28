@@ -5,9 +5,10 @@ import { usePostConsumptionPlan } from "@/app/hooks/usePostConsumptionPlan";
 import { useProductId } from "@/app/hooks/useProductId";
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function PostConsumptionPlanContent() {
+  const translation = useTranslations("postConsumptionPlan");
   const locale = useLocale();
   const id = useProductId();
   const data = usePostConsumptionPlan();
@@ -34,7 +35,7 @@ export default function PostConsumptionPlanContent() {
             href={`/${locale}/product-details?id=${encodeURIComponent(id)}`}
             className="inline-flex items-center gap-1 mt-8 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors"
           >
-            Learn more about the product &rarr;
+            {translation("learnMore")} &rarr;
           </Link>
         </>
       )}

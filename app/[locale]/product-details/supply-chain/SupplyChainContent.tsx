@@ -231,13 +231,13 @@ export default function SupplyChainContent() {
                   </button>
                 </div>
 
-                <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-                  {modalStage.description}
-                </p>
-
                 {modalStage.images.length > 0 && (
                   <ImageCarousel images={modalStage.images} />
                 )}
+
+                <p className="overflow-y-auto h-40 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                  {modalStage.description}
+                </p>
               </div>
             )}
           </DialogPanel>

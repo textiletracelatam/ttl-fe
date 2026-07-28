@@ -21,14 +21,14 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
 const subpages = [
-  { title: "Supply Chain", route: "supply-chain" },
-  { title: "Composition", route: "composition" },
-  { title: "Environmental Impact", route: "environmental-impact" },
-  { title: "Social Impact", route: "social-impact" },
-  { title: "Material Innovation", route: "material-innovation" },
-  { title: "Garment Care", route: "garment-care" },
-  { title: "Post Consumption Plan", route: "post-consumption-plan" },
-  { title: "Certifications", route: "certifications" },
+  { name: "supplyChain", route: "supply-chain" },
+  { name: "composition", route: "composition" },
+  { name: "environmentalImpact", route: "environmental-impact" },
+  { name: "socialImpact", route: "social-impact" },
+  { name: "materialInnovation", route: "material-innovation" },
+  { name: "garmentCare", route: "garment-care" },
+  { name: "postConsumptionPlan", route: "post-consumption-plan" },
+  { name: "certifications", route: "certifications" },
 ];
 
 export default function Navigation() {
@@ -114,7 +114,7 @@ export default function Navigation() {
                     onClick={() => navigate(pdPN)}
                     className="block w-full text-left rounded-lg px-3 py-2 text-sm font-semibold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
-                    Overview
+                    {translation("overview")}
                   </CloseButton>
 
                   <div className="my-1 h-px bg-neutral-200 dark:bg-neutral-700" />
@@ -134,7 +134,7 @@ export default function Navigation() {
                             : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                         }`}
                       >
-                        {sub.title}
+                        {translation(sub.name)}
                       </CloseButton>
                     );
                   })}
@@ -231,7 +231,7 @@ export default function Navigation() {
                     className="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-neutral-400 hover:bg-neutral-50 hover:text-neutral-500 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-primary-500 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:hover:text-white dark:focus-visible:outline-primary-400 cursor-pointer"
                   >
                     <span className="absolute -inset-0.5" />
-                    <span className="sr-only">Close menu</span>
+                    <span className="sr-only">{translation("close")}</span>
                     <XMarkIcon aria-hidden="true" className="size-6" />
                   </button>
                 </div>
@@ -270,7 +270,7 @@ export default function Navigation() {
                           : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                       }`}
                     >
-                      Overview
+                      {translation("overview")}
                     </button>
                     {subpages.map((sub) => {
                       const subPN = `${pdPN}/${sub.route}`;
@@ -285,7 +285,7 @@ export default function Navigation() {
                               : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                           }`}
                         >
-                          {sub.title}
+                          {translation(sub.name)}
                         </button>
                       );
                     })}
