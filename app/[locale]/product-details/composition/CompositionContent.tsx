@@ -7,8 +7,10 @@ import {
   useComposition,
   type CompositionMaterial,
 } from "@/app/hooks/useComposition";
+import { useTranslations } from "next-intl";
 
 export default function CompositionContent() {
+  const translation = useTranslations("composition");
   const data = useComposition();
   const [showAll, setShowAll] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -128,7 +130,7 @@ export default function CompositionContent() {
             onClick={() => setShowAll(!showAll)}
             className="inline-flex items-center gap-1 mt-6 text-sm font-medium text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 transition-colors cursor-pointer"
           >
-            {showAll ? "Show less" : "Show all components"} &rarr;
+            {showAll ? translation("showLess") : translation("showAll")} &rarr;
           </button>
         </>
       )}

@@ -5,6 +5,7 @@ import { useProduct } from "@/app/context/ProductContext";
 import { useProductId } from "@/app/hooks/useProductId";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 function getImpactBgColor(impact: number) {
   const colorMilestones: Record<string, number> = {
@@ -38,15 +39,26 @@ export default function ProductDetailsContent() {
   const fullWidthCards = product.details?.filter((d) => !d.image) ?? [];
 
   function navigate(route: string) {
-    router.push(`/${locale}/product-details/${route}?id=${encodeURIComponent(id)}`);
+    router.push(
+      `/${locale}/product-details/${route}?id=${encodeURIComponent(id)}`,
+    );
   }
 
   return (
     // Assumes ~64px nav. Adjust the offset to match your actual nav height.
     <div className="flex flex-col overflow-hidden h-full">
       <div className="flex flex-col h-full min-h-0 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
-        <h2 className="flex-none text-center font-serif text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 mb-4">
-          All about {product.name}
+        <Image
+          src="https://cdndev.textiletracelatam.com/sake/the-sake-project.jpg"
+          alt="Product's post-consumption plan"
+          width={320}
+          height={22}
+          className="w-full md:w-1/2 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
+          draggable={false}
+        />
+
+        <h2 className="flex-none text-center font-serif text-xl sm:text-3xl text-neutral-900 dark:text-neutral-50 mb-4">
+          {translation("allAbout")} {product.name}
         </h2>
 
         {/* Grid — fills remaining height */}
@@ -97,12 +109,12 @@ export default function ProductDetailsContent() {
             onClick={() => navigate(detail.route)}
             className="relative flex-none mt-3 w-full flex flex-col items-center rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-4 text-center cursor-pointer hover:bg-neutral-200/70 dark:hover:bg-neutral-700/70 transition-colors"
           >
-            {detail.postConsumptionPlanExists === true && (
+            {/* {detail.postConsumptionPlanExists === true && (
               <div className="absolute inset-0 opacity-75 dark:opacity-50 bg-secondary-500 rounded-2xl" />
             )}
             {detail.postConsumptionPlanExists === false && (
               <div className="absolute inset-0 opacity-80 dark:opacity-50 bg-red-500 rounded-2xl" />
-            )}
+            )} */}
             <div className="z-10 flex flex-col items-center w-full">
               <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
                 {detail.title}
