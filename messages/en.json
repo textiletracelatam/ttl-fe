@@ -15,12 +15,12 @@
     "close": "Close"
   },
   "home": {
-    "click": "Click for more →",
+    "allAbout": "All about",
+    "click": "Click to follow the story of this product",
     "close": "Close",
-    "swipe": "Swipe for more"
+    "swipe": "Swipe to follow the story of this product"
   },
   "details": {
-    "allAbout": "All about",
     "click": "← Click for home",
     "swipe": "Swipe for home"
   },

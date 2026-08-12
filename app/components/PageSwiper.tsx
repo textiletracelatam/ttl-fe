@@ -3,7 +3,6 @@
 import { useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { usePathname, useRouter } from "@/navigation";
-import { useLocale } from "next-intl"; // ← add this
 import { useProductId } from "../hooks/useProductId";
 import { pages, pagePath, slugFromPathname } from "../pages";
 
@@ -14,7 +13,6 @@ export default function PageSwiper({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale(); // ← get current locale
   const id = useProductId();
 
   const [emblaRef, emblaApi] = useEmblaCarousel({

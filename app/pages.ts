@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import HomeContent from "./[locale]/HomeContent";
-import ProductDetailsContent from "./[locale]/product-details/ProductDetailsContent";
+import SupplyChainContent from "./[locale]/product-details/supply-chain/SupplyChainContent";
 
 export type PageDef = {
   slug: string;
@@ -11,9 +11,9 @@ export type PageDef = {
 export const pages: PageDef[] = [
   { slug: "home", name: "Home", content: HomeContent },
   {
-    slug: "product-details",
-    name: "Product Details",
-    content: ProductDetailsContent,
+    slug: "product-details/supply-chain",
+    name: "Supply Chain",
+    content: SupplyChainContent,
   },
 ];
 
