@@ -15,12 +15,12 @@
     "close": "Cerrar"
   },
   "home": {
-    "click": "Haz clic para más →",
+    "allAbout": "Todo sobre",
+    "click": "Haz clic para seguir la historia de este producto",
     "close": "Cerrar",
-    "swipe": "Desliza para más"
+    "swipe": "Desliza para seguir la historia de este producto"
   },
   "details": {
-    "allAbout": "Todo sobre",
     "click": "← Haz clic para inicio",
     "swipe": "Desliza para inicio"
   },
