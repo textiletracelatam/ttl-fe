@@ -50,19 +50,21 @@ export default function HomeContent() {
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
-      <a
-        href="https://thesakeproject.com/product/yakuruna-bag/"
-        target="_blank"
-      >
-        <Image
-          src="https://cdndev.textiletracelatam.com/sake/the-sake-project.jpg"
-          alt="Product's post-consumption plan"
-          width={320}
-          height={22}
-          className="w-full md:w-1/4 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
-          draggable={false}
-        />
-      </a>
+      {product?.brandLogoUrl && product?.brandWebsiteUrl && (
+        <a
+          href={product.brandWebsiteUrl}
+          target="_blank"
+        >
+          <Image
+            src={product.brandLogoUrl}
+            alt="Product's post-consumption plan"
+            width={320}
+            height={22}
+            className="w-full md:w-1/4 max-h-[40vh] rounded-2l object-cover p-3 m-auto"
+            draggable={false}
+          />
+        </a>
+      )}
 
       {/* Name — small uppercase label */}
       {product?.name && (

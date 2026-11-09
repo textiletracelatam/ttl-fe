@@ -43,5 +43,85 @@
     "services": "Nuestros Servicios",
     "partners": "Aliados",
     "rights": "Todos los derechos reservados."
+  },
+  "admin": {
+    "topBar": {
+      "navPassports": "Pasaportes",
+      "navNewPassport": "Nuevo pasaporte",
+      "logout": "Cerrar sesión"
+    },
+    "login": {
+      "title": "Inicio de sesión de administrador",
+      "emailLabel": "Correo electrónico",
+      "passwordLabel": "Contraseña",
+      "signIn": "Iniciar sesión",
+      "signingIn": "Iniciando sesión…",
+      "signInFailed": "Error al iniciar sesión. Inténtalo de nuevo."
+    },
+    "passportsList": {
+      "title": "Pasaportes de producto",
+      "newPassport": "+ Nuevo pasaporte",
+      "columnProduct": "Producto",
+      "columnBrand": "Marca / Fabricante",
+      "columnVersion": "Versión",
+      "columnStatus": "Estado",
+      "columnUpdated": "Actualizado",
+      "loading": "Cargando…",
+      "empty": "Aún no hay pasaportes.",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleting": "Eliminando…",
+      "cancel": "Cancelar",
+      "loadFailedStatus": "No se pudieron cargar los pasaportes (estado {status})",
+      "loadFailedGeneric": "No se pudieron cargar los pasaportes.",
+      "deleteFailedStatus": "No se pudo eliminar el pasaporte (estado {status})",
+      "deleteFailedGeneric": "No se pudo eliminar el pasaporte.",
+      "deleteDialogTitle": "¿Eliminar este pasaporte?",
+      "deleteDialogBody": "Esto no se puede deshacer desde aquí — el pasaporte y su producto dejarán de aparecer en esta lista."
+    },
+    "passportForm": {
+      "createTitle": "Registro de Pasaporte de Producto",
+      "createDescription": "Completa cada sección a continuación y envía una sola vez. Los datos se agrupan por tabla y se envían al Lambda de ingestión en una sola solicitud.",
+      "editTitle": "Editar Pasaporte de Producto",
+      "editDescription": "Los campos que dejes sin modificar se conservan — los campos de imagen que no toques mantienen sus archivos actuales.",
+      "autofillButton": "⚡ Autocompletar datos de prueba",
+      "autofillTitle": "Completa con datos de prueba todos los campos que no sean de archivo. Adjunta los archivos manualmente.",
+      "saveChanges": "Guardar cambios",
+      "uploadingFiles": "Subiendo archivos…",
+      "savingChanges": "Guardando tus cambios…",
+      "saved": "Guardado.",
+      "savingSubmission": "Guardando tu envío…",
+      "submitted": "Enviado. Todos los registros fueron enviados para su inserción.",
+      "savingFailedGeneric": "Algo salió mal al guardar. Inténtalo de nuevo.",
+      "submittingFailedGeneric": "Algo salió mal al enviar. Inténtalo de nuevo.",
+      "loadingPassport": "Cargando pasaporte…",
+      "missingPassportId": "No se indicó un id de pasaporte (se esperaba ?id=... en la URL).",
+      "loadPassportFailedStatus": "No se pudo cargar el pasaporte (estado {status})",
+      "loadPassportFailedGeneric": "No se pudo cargar el pasaporte.",
+      "uploadFailedStatus": "La subida del archivo falló con estado {status}",
+      "requestFailedStatus": "La solicitud falló con estado {status}",
+      "fillRequired": "Completa los campos obligatorios resaltados abajo antes de enviar.",
+      "brandOrManufacturerBoth": "Completa solo Marca o Fabricante — no ambos.",
+      "brandOrManufacturerNeither": "Completa Marca o Fabricante.",
+      "noEntriesYet": "Aún no hay entradas de {label}.",
+      "addEntry": "+ Agregar {label}"
+    },
+    "sideNav": {
+      "heading": "Pasaporte Digital de Producto",
+      "sectionsCount": "{count} secciones · {count} tablas"
+    },
+    "tableCard": {
+      "underParent": "bajo {parent}",
+      "tableBadge": "tabla: {id}",
+      "remove": "Quitar",
+      "missingRequired": "Faltan campos requeridos: {list}",
+      "selectPlaceholder": "Seleccionar…",
+      "existingFilesNote": "Subir archivos nuevos reemplaza estos."
+    },
+    "submitBar": {
+      "idleHint": "Todos los campos se guardan localmente hasta que envíes.",
+      "submitting": "Enviando…",
+      "submitPassport": "Enviar pasaporte"
+    }
   }
 }

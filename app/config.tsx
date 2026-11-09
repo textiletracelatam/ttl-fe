@@ -9,6 +9,9 @@ type SocialLink = {
 export const appConfig = {
   name: "Textile Trace LATAM",
   ttlApiHost: process.env.NEXT_PUBLIC_TTL_API_HOST || "http://localhost:9090",
+  cognitoUserPoolId: process.env.NEXT_PUBLIC_COGNITO_USER_POOL_ID || "",
+  cognitoClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || "",
+  cognitoRegion: process.env.NEXT_PUBLIC_COGNITO_REGION || "us-east-1",
   footerLinks: [
     { name: "about", href: "https://textiletracelatam.com/nosotros/" },
     { name: "blog", href: "https://textiletracelatam.com/blog/" },

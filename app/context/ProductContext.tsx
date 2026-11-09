@@ -27,6 +27,8 @@ export type Product = {
   title: string;
   description: string;
   brand: string;
+  brandLogoUrl: string;
+  brandWebsiteUrl: string;
   madeIn: string;
   reference: string;
   sku: string;

@@ -43,5 +43,85 @@
     "services": "Our Services",
     "partners": "Partners",
     "rights": "All rights reserved."
+  },
+  "admin": {
+    "topBar": {
+      "navPassports": "Passports",
+      "navNewPassport": "New Passport",
+      "logout": "Log out"
+    },
+    "login": {
+      "title": "Admin sign in",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "signInFailed": "Sign-in failed. Please try again."
+    },
+    "passportsList": {
+      "title": "Product Passports",
+      "newPassport": "+ New passport",
+      "columnProduct": "Product",
+      "columnBrand": "Brand / Manufacturer",
+      "columnVersion": "Version",
+      "columnStatus": "Status",
+      "columnUpdated": "Updated",
+      "loading": "Loading…",
+      "empty": "No passports yet.",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleting": "Deleting…",
+      "cancel": "Cancel",
+      "loadFailedStatus": "Failed to load passports (status {status})",
+      "loadFailedGeneric": "Failed to load passports.",
+      "deleteFailedStatus": "Failed to delete passport (status {status})",
+      "deleteFailedGeneric": "Failed to delete passport.",
+      "deleteDialogTitle": "Delete this passport?",
+      "deleteDialogBody": "This can't be undone from here — the passport and its product will no longer appear in this list."
+    },
+    "passportForm": {
+      "createTitle": "Product Passport Intake",
+      "createDescription": "Fill in each section below, then submit once. Data is grouped by table and sent to the ingestion Lambda in one request.",
+      "editTitle": "Edit Product Passport",
+      "editDescription": "Fields left as-is are kept — image fields you don't touch keep their current files.",
+      "autofillButton": "⚡ Autofill test data",
+      "autofillTitle": "Fills every non-file field with test data. Attach files manually.",
+      "saveChanges": "Save changes",
+      "uploadingFiles": "Uploading files…",
+      "savingChanges": "Saving your changes…",
+      "saved": "Saved.",
+      "savingSubmission": "Saving your submission…",
+      "submitted": "Submitted. All records were sent for insertion.",
+      "savingFailedGeneric": "Something went wrong while saving. Please try again.",
+      "submittingFailedGeneric": "Something went wrong while submitting. Please try again.",
+      "loadingPassport": "Loading passport…",
+      "missingPassportId": "No passport id given (expected ?id=... in the URL).",
+      "loadPassportFailedStatus": "Failed to load passport (status {status})",
+      "loadPassportFailedGeneric": "Failed to load passport.",
+      "uploadFailedStatus": "File upload failed with status {status}",
+      "requestFailedStatus": "Request failed with status {status}",
+      "fillRequired": "Fill in the required fields highlighted below before submitting.",
+      "brandOrManufacturerBoth": "Fill in only one of Brand or Manufacturer — not both.",
+      "brandOrManufacturerNeither": "Fill in either Brand or Manufacturer.",
+      "noEntriesYet": "No {label} entries yet.",
+      "addEntry": "+ Add {label}"
+    },
+    "sideNav": {
+      "heading": "Digital Product Passport",
+      "sectionsCount": "{count} sections · {count} tables"
+    },
+    "tableCard": {
+      "underParent": "under {parent}",
+      "tableBadge": "table: {id}",
+      "remove": "Remove",
+      "missingRequired": "Missing required: {list}",
+      "selectPlaceholder": "Select…",
+      "existingFilesNote": "Uploading new files replaces these."
+    },
+    "submitBar": {
+      "idleHint": "All fields save locally until you submit.",
+      "submitting": "Submitting…",
+      "submitPassport": "Submit passport"
+    }
   }
 }
