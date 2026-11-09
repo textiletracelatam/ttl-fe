@@ -111,7 +111,7 @@ export default function Navigation() {
                   {/* Link to main product details page */}
                   <CloseButton
                     as="button"
-                    onClick={() => navigate(pdPN)}
+                    onClick={() => navigate(homePN)}
                     className="block w-full text-left rounded-lg px-3 py-2 text-sm font-semibold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                   >
                     {translation("overview")}
@@ -263,9 +263,9 @@ export default function Navigation() {
                   </DisclosureButton>
                   <DisclosurePanel className="space-y-1 pl-3">
                     <button
-                      onClick={() => navigate(pdPN)}
+                      onClick={() => navigate(homePN)}
                       className={`block w-full text-left rounded-md px-3 py-2 text-sm font-semibold cursor-pointer ${
-                        pathname === pdPN
+                        pathname === homePN || pathname === pdPN
                           ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
                           : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                       }`}

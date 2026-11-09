@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { ProductProvider } from "../context/ProductContext";
+import { AuthProvider } from "../context/AuthContext";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
@@ -13,7 +14,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <Suspense>
-      <ProductProvider>{children}</ProductProvider>
+      <AuthProvider>
+        <ProductProvider>{children}</ProductProvider>
+      </AuthProvider>
     </Suspense>
   );
 }

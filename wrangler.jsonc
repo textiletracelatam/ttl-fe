@@ -2,9 +2,17 @@
   "name": "ttl-fe",
   "compatibility_date": "2026-02-10",
   "assets": {
-    "directory": "./out"
+    "directory": "./out",
+    // Without this, Cloudflare serves its own generic 404 for unmatched
+    // paths instead of the 404.html Next.js builds from app/not-found.tsx
+    // (which redirects to https://textiletracelatam.com/404).
+    "not_found_handling": "404-page"
   },
   "vars": {
-    "NEXT_PUBLIC_TTL_API_HOST": "https://apidev.textiletracelatam.com"
+    "NEXT_PUBLIC_TTL_API_HOST": "https://apidev.textiletracelatam.com",
+    // From the CDK stack's DevTtlAdminUserPoolId / DevTtlAdminUserPoolClientId outputs.
+    "NEXT_PUBLIC_COGNITO_USER_POOL_ID": "us-east-1_DrJ03hG33",
+    "NEXT_PUBLIC_COGNITO_CLIENT_ID": "fprr8r0gtkrv0u1t1hp7jcig",
+    "NEXT_PUBLIC_COGNITO_REGION": "us-east-1"
   }
 }
